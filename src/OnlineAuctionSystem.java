@@ -138,7 +138,7 @@ public class OnlineAuctionSystem {
 	    // Case when the bid value is equal to the max bid amount. If they're same,then set the current bid
 	    // to the bid value.
 	    lot.setCurrentBid(bid);
-	    return 3;
+	    return 2;
 	} else {
 	    // Case when the bid value is more than the max bid amount
 	    // In this case, the bid amount is the winning bid. Hence, update the maximum
@@ -163,7 +163,7 @@ public class OnlineAuctionSystem {
 	var bidder = getBidder(bidderId);
 	// Handles if the given input is a bad input by returning 1
 	if (bidderId < 1 || bid < 1 || auction == null || bidder == null || !auction.isOpen())
-	    return 1;
+	    return 0;
 
 	var lot = auction.getLot(lotNumber);
 	int maximumRememberedBid = lot.getMaximumBid();
@@ -176,7 +176,7 @@ public class OnlineAuctionSystem {
 	
 	// Check for other bidders if the bid value is a valid next bid.
 	// If not, then return 1
-	if (!auction.isValidNextBid(lot, bid)) return 1;
+	if (!auction.isValidNextBid(lot, bid)) return 2;
 	
 	// Scenario when a bidder other than the winner bidder bids on a lot
 	return processOtherBiddersBid(bid, maximumRememberedBid, minBidIncrement, lot, bidder);
