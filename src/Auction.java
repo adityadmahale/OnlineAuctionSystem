@@ -3,7 +3,7 @@ public class Auction {
     // Constants defining auction status values
     private static final String NEW = "new";
     private static final String OPEN = "open";
-    private static final String CLOSE = "close";
+    private static final String CLOSE = "closed";
 
     private String name;
     private String status;
